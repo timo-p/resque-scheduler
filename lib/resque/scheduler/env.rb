@@ -43,31 +43,31 @@ module Resque
 
       def setup_scheduler_configuration
         Resque::Scheduler.configure do |c|
-          if options.key?(:app_name)
+          if !options[:app_name].nil?
             c.app_name = options[:app_name]
           end
 
-          if options.key?(:dynamic)
+          if !options[:dynamic].nil?
             c.dynamic = !!options[:dynamic]
           end
 
-          if options.key(:env)
+          if !options[:env].nil?
             c.env = options[:env]
           end
 
-          if options.key?(:logfile)
+          if !options[:logfile].nil?
             c.logfile = options[:logfile]
           end
 
-          if options.key?(:logformat)
+          if !options[:logformat].nil?
             c.logformat = options[:logformat]
           end
 
-          if psleep = options[:poll_sleep_amount] && !psleep.nil?
-            c.poll_sleep_amount = Float(psleep)
+          if !options[:poll_sleep_amount].nil?
+            c.poll_sleep_amount = Float(options[:poll_sleep_amount])
           end
 
-          if options.key?(:verbose)
+          if !options[:verbose].nil?
             c.verbose = !!options[:verbose]
           end
         end
